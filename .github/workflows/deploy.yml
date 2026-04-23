@@ -26,6 +26,9 @@ jobs:
           cp .env.example .env
           php artisan key:generate
 
+      - name: Fix public/.htaccess RewriteBase for production
+        run: sed -i 's|RewriteBase /funnybingo/public/|RewriteBase /|' public/.htaccess
+
       - name: Cache config & routes for production
         run: |
           php artisan config:cache
@@ -38,7 +41,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: /
           exclude: |
             **/.git*
             **/.git*/**
