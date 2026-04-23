@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /c/xampp/htdocs/_funnybingo_backup)",
+      "Bash(cp /c/xampp/htdocs/funnybingo/index.php /c/xampp/htdocs/_funnybingo_backup/)",
+      "Bash(cp /c/xampp/htdocs/funnybingo/mobile_host.php /c/xampp/htdocs/_funnybingo_backup/)",
+      "Bash(cp /c/xampp/htdocs/funnybingo/script.js /c/xampp/htdocs/_funnybingo_backup/)",
+      "Bash(cp /c/xampp/htdocs/funnybingo/style.css /c/xampp/htdocs/_funnybingo_backup/)"
+    ]
+  }
+}

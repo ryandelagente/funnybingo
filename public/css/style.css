@@ -1,0 +1,321 @@
+/* style.css */
+:root {
+    --bg: #020617;
+    --panel: #111827;
+    --text: #f8fafc;
+    --border: #1f2937;
+    --pattern-gold: #fbbf24;
+    --color-b: #2563eb;
+    --color-i: #dc2626;
+    --color-n: #f8fafc;
+    --color-g: #16a34a;
+    --color-o: #ea580c;
+}
+
+body.hall-theme {
+    --bg: #f3f4f6; 
+    --panel: #ffffff; 
+    --text: #111827; 
+    --border: #d1d5db;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg); 
+    color: var(--text);
+    margin: 0; 
+    padding: 0; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    overflow-x: hidden; /* Prevent horizontal body shake */
+}
+
+/* NAVIGATION & STATUS */
+.top-nav {
+    background: #000;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-weight: 900;
+    color: var(--color-g);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--pattern-gold);
+}
+
+.status-ribbon {
+    background: #000; 
+    color: #94a3b8; 
+    padding: 5px 20px; 
+    display: flex;
+    justify-content: space-between; 
+    font-size: 0.8rem; 
+    border-bottom: 1px solid var(--border);
+}
+
+.theme-btn { 
+    background: none; 
+    border: 1px solid #444; 
+    color: #999; 
+    cursor: pointer; 
+    padding: 2px 8px; 
+    border-radius: 4px; 
+}
+
+/* GAME LAYOUT */
+.game-title { 
+    font-size: 2.2rem; 
+    font-weight: 950; 
+    letter-spacing: 8px; 
+    text-align: center; 
+    padding: 10px 0; 
+}
+
+.game-title span:nth-child(1) { color: var(--color-b); }
+.game-title span:nth-child(2) { color: var(--color-i); }
+.game-title span:nth-child(4) { color: var(--color-g); }
+.game-title span:nth-child(5) { color: var(--color-o); }
+
+.desktop-container {
+    flex: 1; 
+    display: grid; 
+    grid-template-columns: 320px 1fr 340px; 
+    gap: 15px;
+    padding: 15px; 
+    width: 100%; 
+    max-width: 1900px; 
+    margin: 0 auto; 
+    min-height: 0;
+}
+
+.pillar {
+    background: var(--panel); 
+    border-radius: 15px; 
+    border: 1px solid var(--border);
+    padding: 15px; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 0; 
+    gap: 10px;
+}
+
+/* MASTER BOARD GRID */
+.master-grid { 
+    display: grid; 
+    grid-template-columns: 45px repeat(15, 1fr); 
+    gap: 5px; 
+    height: 100%; 
+}
+
+.cell { 
+    background: #030712; 
+    border: 1px solid var(--border); 
+    border-radius: 6px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.2rem; 
+    font-weight: 800; 
+}
+
+.letter-cell { background: none; border: none; font-size: 1.8rem; font-weight: 900; }
+.row-b { color: var(--color-b); } 
+.row-i { color: var(--color-i); } 
+.row-g { color: var(--color-g); } 
+.row-o { color: var(--color-o); }
+
+.cell.active { border-color: white; transform: scale(1.05); z-index: 5; }
+.cell.active.row-b { background: var(--color-b); color: #fff; }
+.cell.active.row-i { background: var(--color-i); color: #fff; }
+.cell.active.row-n { background: var(--color-n); color: #000; }
+.cell.active.row-g { background: var(--color-g); color: #000; }
+.cell.active.row-o { background: var(--color-o); color: #fff; }
+
+/* CONTROLS */
+.main-ball-circle { 
+    width: 140px; 
+    height: 140px; 
+    background: radial-gradient(circle,#fff,#999); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 4.5rem; 
+    color: #000; 
+    margin: 0 auto; 
+    border: 6px solid #334155; 
+}
+
+.call-text-display { text-align: center; font-size: 2.5rem; font-weight: 900; }
+.btn-call { background: var(--color-g); color: #000; padding: 18px; border: none; border-radius: 12px; font-size: 1.4rem; font-weight: 900; cursor: pointer; }
+.btn-bingo { background: var(--pattern-gold); color: #000; border: none; padding: 12px; border-radius: 12px; font-size: 1.2rem; font-weight: 900; cursor: pointer; }
+.btn-reset { background: #4b5563; color: #fff; border: none; padding: 10px; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+
+/* PLAYER CARD STYLES */
+.player-mode { overflow-y: auto; height: auto; padding: 20px; }
+.player-container { max-width: 450px; margin: 0 auto; text-align: center; }
+.player-grid { 
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 8px; 
+    background: #000; 
+    padding: 12px; 
+    border-radius: 12px; 
+    border: 2px solid var(--border); 
+    margin-top: 15px; 
+}
+.player-cell { 
+    aspect-ratio: 1; 
+    background: #1f2937; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: 800; 
+    font-size: 1.4rem; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    color: white; 
+    border: 1px solid #374151; 
+}
+.player-cell.marked { background: var(--color-g); color: #000; border-color: #fff; }
+.player-cell.free-space { background: var(--color-i); font-size: 0.7rem; }
+
+/* PATTERN UI */
+.p-monitor { background: #000; padding: 15px; border-radius: 12px; text-align: center; border: 2px solid var(--border); }
+#p-name { color: var(--pattern-gold); font-weight: 900; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px; }
+.p-preview-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; width: 140px; margin: 10px auto; }
+.p-dot { aspect-ratio: 1; border-radius: 2px; background: #222; }
+.p-dot.active { background: var(--pattern-gold); box-shadow: 0 0 8px var(--pattern-gold); }
+.p-list-scroll { overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 8px; padding-right: 5px; margin-top: 10px; }
+.p-btn { background: #1f2937; color: white; border: 1px solid var(--border); padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.85rem; text-align: left; transition: background 0.2s ease; }
+.p-btn.selected { background: var(--pattern-gold); color: #000; border-color: #fff; }
+
+/* POPUP & HISTORY */
+#ball-pop-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 1000; }
+.pop-ball { width: 350px; height: 350px; background: radial-gradient(circle at 30% 30%, #fff, #cbd5e1); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #000; box-shadow: 0 0 150px rgba(255,255,255,0.3); border: 18px solid white; opacity: 0; transform: scale(0.2); transition: 0.4s ease; }
+.pop-ball.active { opacity: 1; transform: scale(1.1); }
+.pop-ball.fade { opacity: 0; transform: scale(1.4); }
+.pop-l { font-size:4rem; font-weight:900; }
+.pop-n { font-size:10rem; font-weight:900; }
+
+.history-tray { display: flex; gap: 10px; justify-content: center; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-top: 10px; }
+.hist-ball { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; color: #000; background: #fff; border: 3px solid #ccc; }
+
+/* MISC */
+.copyright { text-align: center; padding: 15px; font-size: 0.8rem; color: #64748b; background: #000; border-top: 1px solid var(--border); }
+@keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
+
+/* QR CODE */
+
+/* Center the QR code container and its contents */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Ensure the generated QR canvas/image is centered */
+#qrcode {
+    display: flex;
+    justify-content: center;
+    background: white; /* Adds contrast for scanning */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Center the voice-box container */
+.voice-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Ensure the label inside aligns correctly */
+.voice-box label {
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adds space between checkbox and text */
+}
+
+/* HELP MODAL */
+.help-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+.help-overlay.active { display: flex; }
+.help-content { background: var(--panel); border: 2px solid var(--border); border-radius: 20px; padding: 30px; max-width: 800px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
+.close-help { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text); font-size: 2rem; cursor: pointer; }
+.help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+.help-section h3 { color: var(--color-g); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.help-section ul { padding-left: 20px; line-height: 1.6; color: #94a3b8; }
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    .desktop-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    /* Fixed grid overflow for mobile caller board */
+    .master-grid { 
+        grid-template-columns: 35px repeat(15, 25px); 
+        gap: 2px;
+        overflow-x: auto;
+        display: grid;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+
+    .cell {
+        font-size: 0.8rem !important;
+        height: 28px;
+    }
+
+    .letter-cell {
+        font-size: 1.1rem !important;
+    }
+
+    .main-ball-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
+
+    .help-grid { grid-template-columns: 1fr; }
+}
